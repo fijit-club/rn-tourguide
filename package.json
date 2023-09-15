@@ -1,10 +1,13 @@
 {
-  "name": "rn-tourguide",
-  "version": "3.3.0",
+  "name": "@boscotec/rn-tourguide",
+  "version": "0.0.1",
   "description": "Make an interactive step by step tour guide for your react-native app (a rewrite of react-native-copilot)",
   "main": "node_modules/expo/AppEntry.js",
   "types": "lib/index.d.ts",
   "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/boscotec"
+  },
   "scripts": {
     "start": "yarn config:dev && expo start -c",
     "start:web": "yarn config:dev && expo start -c -w",
@@ -24,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xcarpentier/rn-tourguide.git"
+    "url": "git+https://github.com/boscotec/rn-tourguide.git"
   },
   "keywords": [
     "react-native",
@@ -37,9 +40,9 @@
   "author": "Xavier Carpentier <xcapetir@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xcarpentier/rn-tourguide/issues"
+    "url": "https://github.com/boscotec/rn-tourguide/issues"
   },
-  "homepage": "https://xcarpentier.github.io/rn-tourguide/",
+  "homepage": "https://boscotec.github.io/rn-tourguide/",
   "devDependencies": {
     "@types/hoist-non-react-statics": "3.3.1",
     "@types/jest": "25.2.3",
