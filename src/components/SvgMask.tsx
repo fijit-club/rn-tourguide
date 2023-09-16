@@ -6,10 +6,9 @@ import {
   LayoutChangeEvent,
   Platform,
   StyleProp,
-  View,
   ViewStyle,
-  TouchableWithoutFeedback,
   ScaledSize,
+  View,
 } from 'react-native'
 import Svg, { PathProps } from 'react-native-svg'
 import { IStep, ValueXY } from '../types'
@@ -23,9 +22,12 @@ interface Props {
   animationDuration?: number
   backdropColor: string
   dismissOnPress?: boolean
+  clickableGuide?: boolean
   maskOffset?: number
   borderRadius?: number
   currentStep?: IStep
+  isLastStep?: boolean
+  handleNext: () => void
   easing: (value: number) => number
   stop: () => void
 }
@@ -185,20 +187,26 @@ export class SvgMask extends Component<Props, State> {
     if (!this.state.canvasSize) {
       return null
     }
-    const { dismissOnPress, stop } = this.props
-    const Wrapper: any = dismissOnPress ? TouchableWithoutFeedback : View
+    const { dismissOnPress, clickableGuide, stop, handleNext } = this.props
 
     return (
-      <Wrapper
-        style={this.props.style}
-        onLayout={this.handleLayout}
-        pointerEvents='none'
-        onPress={dismissOnPress ? stop : undefined}
-      >
+      <View style={this.props.style} onLayout={this.handleLayout}>
         <Svg
-          pointerEvents='none'
           width={this.state.canvasSize.x}
           height={this.state.canvasSize.y}
+          onPress={() => {
+            if (dismissOnPress) {
+              stop()
+            }
+
+            if (clickableGuide) {
+              if (!this.props.isLastStep) {
+                handleNext()
+              } else {
+                stop()
+              }
+            }
+          }}
         >
           <AnimatedSvgPath
             ref={this.mask}
@@ -207,9 +215,15 @@ export class SvgMask extends Component<Props, State> {
             fillRule='evenodd'
             d={this.firstPath}
             opacity={this.state.opacity as any}
+            pointerEvents={clickableGuide ? 'auto' : 'none'}
+            onPress={() => {
+              if (dismissOnPress) {
+                stop()
+              }
+            }}
           />
         </Svg>
-      </Wrapper>
+      </View>
     )
   }
 }
