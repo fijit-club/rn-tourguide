@@ -30,6 +30,7 @@ export interface TourGuideProviderProps {
   animationDuration?: number
   children: React.ReactNode
   dismissOnPress?: boolean
+  clickableGuide?: boolean
   preventOutsideInteraction?: boolean
 }
 
@@ -47,6 +48,7 @@ export const TourGuideProvider = ({
   verticalOffset,
   startAtMount = false,
   dismissOnPress = false,
+  clickableGuide = false,
   preventOutsideInteraction = false,
 }: TourGuideProviderProps) => {
   const [tourKey, setTourKey] = useState<string | '_default'>('_default')
@@ -268,6 +270,7 @@ export const TourGuideProvider = ({
             maskOffset,
             borderRadius,
             dismissOnPress,
+            clickableGuide,
             preventOutsideInteraction,
           }}
         />
