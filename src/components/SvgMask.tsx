@@ -26,8 +26,10 @@ interface Props {
   maskOffset?: number
   borderRadius?: number
   currentStep?: IStep
+  isLastStep: boolean
   easing: (value: number) => number
   stop: () => void
+  handleNext: () => void
 }
 
 interface State {
@@ -185,7 +187,15 @@ export class SvgMask extends Component<Props, State> {
     if (!this.state.canvasSize) {
       return null
     }
-    const { dismissOnPress, stop, position, size, currentStep } = this.props
+    const {
+      dismissOnPress,
+      stop,
+      position,
+      size,
+      currentStep,
+      isLastStep,
+      handleNext,
+    } = this.props
 
     const onZonePress = (e: GestureResponderEvent) => {
       if (!currentStep?.onZonePress) {
@@ -206,6 +216,12 @@ export class SvgMask extends Component<Props, State> {
         locationY <= position.y + size.y
       ) {
         currentStep.onZonePress()
+
+        if (isLastStep) {
+          stop()
+        } else {
+          handleNext()
+        }
       }
     }
 

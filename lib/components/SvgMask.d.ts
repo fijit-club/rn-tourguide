@@ -12,8 +12,10 @@ interface Props {
     maskOffset?: number;
     borderRadius?: number;
     currentStep?: IStep;
+    isLastStep: boolean;
     easing: (value: number) => number;
     stop: () => void;
+    handleNext: () => void;
 }
 interface State {
     size: ValueXY;
