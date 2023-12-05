@@ -18,5 +18,6 @@ export interface TourGuideZoneProps {
     name?: string;
     tooltipArrowPosition?: ArrowPositions;
     onZonePress?: () => void;
+    tooltipStyleOverride?: ViewStyle;
 }
-export declare const TourGuideZone: ({ isTourGuide, tourKey, zone, children, shape, text, maskOffset, borderRadius, style, keepTooltipPosition, tooltipBottomOffset, borderRadiusObject, name, tooltipArrowPosition, onZonePress, }: TourGuideZoneProps) => JSX.Element;
+export declare const TourGuideZone: ({ isTourGuide, tourKey, zone, children, shape, text, maskOffset, borderRadius, style, keepTooltipPosition, tooltipBottomOffset, borderRadiusObject, name, tooltipArrowPosition, onZonePress, tooltipStyleOverride, }: TourGuideZoneProps) => JSX.Element;

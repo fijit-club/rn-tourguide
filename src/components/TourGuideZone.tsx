@@ -30,6 +30,7 @@ export interface TourGuideZoneProps {
   name?: string
   tooltipArrowPosition?: ArrowPositions
   onZonePress?: () => void
+  tooltipStyleOverride?: ViewStyle
 }
 
 export const TourGuideZone = ({
@@ -48,6 +49,7 @@ export const TourGuideZone = ({
   name,
   tooltipArrowPosition = 'topLeft',
   onZonePress,
+  tooltipStyleOverride,
 }: TourGuideZoneProps) => {
   if (!isTourGuide) {
     return <>{children}</>
@@ -68,6 +70,7 @@ export const TourGuideZone = ({
         borderRadiusObject,
         tooltipArrowPosition,
         onZonePress,
+        tooltipStyleOverride,
       }}
     >
       <Wrapper {...{ style }}>{children}</Wrapper>
