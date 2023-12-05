@@ -190,7 +190,7 @@ export class SvgMask extends Component<Props, State> {
       <Pressable
         style={this.props.style}
         onLayout={this.handleLayout}
-        onPress={dismissOnPress ? stop : undefined}
+        onPress={dismissOnPress ? stop : this.props.currentStep?.onZonePress}
       >
         <Svg
           pointerEvents='none'
