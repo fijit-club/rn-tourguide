@@ -1,3 +1,4 @@
+import { ViewStyle } from 'react-native'
 import { ArrowPositions } from './components/TourGuideZone'
 
 export type Shape =
@@ -20,6 +21,7 @@ export interface IStep {
   tooltipBottomOffset?: number
   borderRadiusObject?: BorderRadiusObject
   tooltipArrowPosition?: ArrowPositions
+  tooltipStyleOverride?: ViewStyle
   onZonePress?: () => void
 }
 export interface StepObject {

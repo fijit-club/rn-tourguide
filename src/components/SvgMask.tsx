@@ -202,11 +202,6 @@ export class SvgMask extends Component<Props, State> {
         return
       }
 
-      if (dismissOnPress) {
-        stop()
-        return
-      }
-
       const { locationX, locationY } = e.nativeEvent
 
       if (
@@ -222,6 +217,9 @@ export class SvgMask extends Component<Props, State> {
         } else {
           handleNext()
         }
+      } else if (dismissOnPress) {
+        stop()
+        return
       }
     }
 
