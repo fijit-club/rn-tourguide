@@ -1,3 +1,4 @@
+import { ArrowPositions } from './components/TourGuideZone';
 export declare type Shape = 'circle' | 'rectangle' | 'circle_and_keep' | 'rectangle_and_keep';
 export interface IStep {
     name: string;
@@ -12,6 +13,8 @@ export interface IStep {
     keepTooltipPosition?: boolean;
     tooltipBottomOffset?: number;
     borderRadiusObject?: BorderRadiusObject;
+    tooltipArrowPosition?: ArrowPositions;
+    onZonePress?: () => void;
 }
 export interface StepObject {
     [key: string]: IStep;
