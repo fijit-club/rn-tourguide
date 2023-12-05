@@ -9,6 +9,7 @@ import {
   ViewStyle,
   Pressable,
   ScaledSize,
+  GestureResponderEvent,
 } from 'react-native'
 import Svg, { PathProps } from 'react-native-svg'
 import { IStep, ValueXY } from '../types'
@@ -184,13 +185,35 @@ export class SvgMask extends Component<Props, State> {
     if (!this.state.canvasSize) {
       return null
     }
-    const { dismissOnPress, stop } = this.props
+    const { dismissOnPress, stop, position, size, currentStep } = this.props
+
+    const onZonePress = (e: GestureResponderEvent) => {
+      if (!currentStep?.onZonePress) {
+        return
+      }
+
+      if (dismissOnPress) {
+        stop()
+        return
+      }
+
+      const { locationX, locationY } = e.nativeEvent
+
+      if (
+        locationX >= position.x &&
+        locationX <= position.x + size.x &&
+        locationY >= position.y &&
+        locationY <= position.y + size.y
+      ) {
+        currentStep.onZonePress()
+      }
+    }
 
     return (
       <Pressable
         style={this.props.style}
         onLayout={this.handleLayout}
-        onPress={dismissOnPress ? stop : this.props.currentStep?.onZonePress}
+        onPress={onZonePress}
       >
         <Svg
           pointerEvents='none'
