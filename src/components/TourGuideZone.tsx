@@ -4,6 +4,16 @@ import { BorderRadiusObject, Shape } from '../types'
 import { Step } from './Step'
 import { Wrapper } from './Wrapper'
 
+export type ArrowPositions =
+  | 'top'
+  | 'topLeft'
+  | 'topRight'
+  | 'bottom'
+  | 'bottomLeft'
+  | 'bottomRight'
+  | 'left'
+  | 'right'
+
 export interface TourGuideZoneProps {
   zone: number
   tourKey?: string
@@ -17,6 +27,9 @@ export interface TourGuideZoneProps {
   keepTooltipPosition?: boolean
   tooltipBottomOffset?: number
   borderRadiusObject?: BorderRadiusObject
+  name?: string
+  tooltipArrowPosition?: ArrowPositions
+  onZonePress?: () => void
 }
 
 export const TourGuideZone = ({
@@ -32,6 +45,9 @@ export const TourGuideZone = ({
   keepTooltipPosition,
   tooltipBottomOffset,
   borderRadiusObject,
+  name,
+  tooltipArrowPosition = 'topLeft',
+  onZonePress,
 }: TourGuideZoneProps) => {
   if (!isTourGuide) {
     return <>{children}</>
@@ -41,7 +57,7 @@ export const TourGuideZone = ({
     <Step
       text={text ?? `Zone ${zone}`}
       order={zone}
-      name={`${zone}`}
+      name={name ?? `${zone}`}
       {...{
         tourKey,
         shape,
@@ -50,6 +66,8 @@ export const TourGuideZone = ({
         keepTooltipPosition,
         tooltipBottomOffset,
         borderRadiusObject,
+        tooltipArrowPosition,
+        onZonePress,
       }}
     >
       <Wrapper {...{ style }}>{children}</Wrapper>

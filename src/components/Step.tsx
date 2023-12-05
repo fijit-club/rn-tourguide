@@ -2,6 +2,7 @@ import * as React from 'react'
 import { BorderRadiusObject, Shape } from '../types'
 import { ConnectedStep } from './ConnectedStep'
 import { TourGuideContext } from './TourGuideContext'
+import { ArrowPositions } from './TourGuideZone'
 
 interface Props {
   name: string
@@ -16,6 +17,8 @@ interface Props {
   keepTooltipPosition?: boolean
   tooltipBottomOffset?: number
   borderRadiusObject?: BorderRadiusObject
+  tooltipArrowPosition?: ArrowPositions
+  onZonePress?: () => void
 }
 
 export const Step = (props: Props) => {
