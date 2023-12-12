@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { TourGuideContext, Ctx } from './TourGuideContext'
 import { useIsMounted } from '../hooks/useIsMounted'
-import { IStep, Labels, StepObject, Steps } from '../types'
+import { IStep, Labels, Offset, StepObject, Steps } from '../types'
 import * as utils from '../utilities'
 import { Modal } from './Modal'
 import { OFFSET_WIDTH } from './style'
@@ -31,7 +31,7 @@ export interface TourGuideProviderProps {
   backdropColor?: string
   verticalOffset?: number
   wrapperStyle?: StyleProp<ViewStyle>
-  maskOffset?: number
+  maskOffset?: number | Offset
   borderRadius?: number
   animationDuration?: number
   children: React.ReactNode
