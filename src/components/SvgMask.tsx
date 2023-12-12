@@ -198,10 +198,6 @@ export class SvgMask extends Component<Props, State> {
     } = this.props
 
     const onZonePress = (e: GestureResponderEvent) => {
-      if (!currentStep?.onZonePress) {
-        return
-      }
-
       const { locationX, locationY } = e.nativeEvent
 
       if (
@@ -210,7 +206,9 @@ export class SvgMask extends Component<Props, State> {
         locationY >= position.y &&
         locationY <= position.y + size.y
       ) {
-        currentStep.onZonePress()
+        if (currentStep && currentStep.onZonePress) {
+          currentStep.onZonePress()
+        }
 
         if (isLastStep) {
           stop()
