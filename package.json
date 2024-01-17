@@ -2,11 +2,11 @@
   "name": "@boscotec/rn-tourguide",
   "version": "0.0.21",
   "description": "Make an interactive step by step tour guide for your react-native app (a rewrite of react-native-copilot)",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "private": false,
   "publishConfig": {
-    "@boscotec:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/boscotec"
   },
   "scripts": {
     "start": "yarn config:dev && expo start -c",
