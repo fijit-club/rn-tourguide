@@ -44,3 +44,5 @@ lib/
 web-build/
 
 .npmrc
+
+.github/workflows/release-package.yml
