@@ -208,6 +208,7 @@ export class SvgMask extends Component<Props, State> {
       ) {
         if (currentStep && currentStep.onZonePress) {
           currentStep.onZonePress()
+          return;
         }
 
         if (isLastStep) {
