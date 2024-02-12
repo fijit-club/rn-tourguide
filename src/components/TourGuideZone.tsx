@@ -17,6 +17,8 @@ export interface TourGuideZoneProps {
   keepTooltipPosition?: boolean
   tooltipBottomOffset?: number
   borderRadiusObject?: BorderRadiusObject
+  onZonePress?: () => void
+  isLastStep: boolean
 }
 
 export const TourGuideZone = ({
@@ -32,6 +34,8 @@ export const TourGuideZone = ({
   keepTooltipPosition,
   tooltipBottomOffset,
   borderRadiusObject,
+  onZonePress,
+  isLastStep,
 }: TourGuideZoneProps) => {
   if (!isTourGuide) {
     return <>{children}</>
@@ -50,6 +54,8 @@ export const TourGuideZone = ({
         keepTooltipPosition,
         tooltipBottomOffset,
         borderRadiusObject,
+        onZonePress,
+        isLastStep,
       }}
     >
       <Wrapper {...{ style }}>{children}</Wrapper>

@@ -6,10 +6,10 @@ import {
   LayoutChangeEvent,
   Platform,
   StyleProp,
-  View,
   ViewStyle,
-  TouchableWithoutFeedback,
   ScaledSize,
+  GestureResponderEvent,
+  Pressable,
 } from 'react-native'
 import Svg, { PathProps } from 'react-native-svg'
 import { IStep, ValueXY } from '../types'
@@ -28,6 +28,8 @@ interface Props {
   currentStep?: IStep
   easing: (value: number) => number
   stop: () => void
+  handleNext: () => void
+  isLastStep: boolean
 }
 
 interface State {
@@ -185,15 +187,45 @@ export class SvgMask extends Component<Props, State> {
     if (!this.state.canvasSize) {
       return null
     }
-    const { dismissOnPress, stop } = this.props
-    const Wrapper: any = dismissOnPress ? TouchableWithoutFeedback : View
+
+      const {
+        dismissOnPress,
+        stop,
+        position,
+        size,
+        currentStep,
+        isLastStep,
+        handleNext,
+      } = this.props
+      const onZonePress = (e: GestureResponderEvent) => {
+        const { locationX, locationY } = e.nativeEvent
+        if (
+          locationX >= position.x &&
+          locationX <= position.x + size.x &&
+          locationY >= position.y &&
+          locationY <= position.y + size.y
+        ) {
+          if (currentStep && currentStep.onZonePress) {
+            currentStep.onZonePress()
+            return
+          }
+          if (isLastStep) {
+            stop()
+          } else {
+            handleNext()
+          }
+        } else if (dismissOnPress) {
+          stop()
+          return
+        }
+      }
 
     return (
-      <Wrapper
+      <Pressable
         style={this.props.style}
         onLayout={this.handleLayout}
         pointerEvents='none'
-        onPress={dismissOnPress ? stop : undefined}
+        onPress={onZonePress}
       >
         <Svg
           pointerEvents='none'
@@ -209,7 +241,7 @@ export class SvgMask extends Component<Props, State> {
             opacity={this.state.opacity as any}
           />
         </Svg>
-      </Wrapper>
+      </Pressable>
     )
   }
 }

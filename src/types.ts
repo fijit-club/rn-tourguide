@@ -17,6 +17,8 @@ export interface IStep {
   keepTooltipPosition?: boolean
   tooltipBottomOffset?: number
   borderRadiusObject?: BorderRadiusObject
+  isLastStep: boolean
+  onZonePress?: () => void
 }
 export interface StepObject {
   [key: string]: IStep
