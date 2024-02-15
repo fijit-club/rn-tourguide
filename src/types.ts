@@ -12,7 +12,7 @@ export interface Offset {
   bottom?: number
   left?: number
   right?: number
-};
+}
 
 export interface IStep {
   name: string
@@ -29,6 +29,7 @@ export interface IStep {
   borderRadiusObject?: BorderRadiusObject
   tooltipArrowPosition?: ArrowPositions
   tooltipStyleOverride?: ViewStyle
+  isLastStep: boolean
   onZonePress?: () => void
 }
 export interface StepObject {

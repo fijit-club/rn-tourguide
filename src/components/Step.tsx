@@ -18,6 +18,7 @@ interface Props {
   tooltipBottomOffset?: number
   borderRadiusObject?: BorderRadiusObject
   tooltipArrowPosition?: ArrowPositions
+  isLastStep: boolean
   onZonePress?: () => void
 }
 
