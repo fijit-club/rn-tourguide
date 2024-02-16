@@ -29,8 +29,8 @@ export interface IStep {
   borderRadiusObject?: BorderRadiusObject
   tooltipArrowPosition?: ArrowPositions
   tooltipStyleOverride?: ViewStyle
-  isLastStep: boolean
   onZonePress?: () => void
+  isLastStep?: boolean
 }
 export interface StepObject {
   [key: string]: IStep

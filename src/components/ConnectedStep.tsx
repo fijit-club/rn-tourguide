@@ -18,8 +18,6 @@ interface Props {
   borderRadius?: number
   keepTooltipPosition?: boolean
   tooltipBottomOffset?: number
-  isLastStep: boolean
-  onZonePress?: () => void
 }
 
 export class ConnectedStep extends React.Component<Props> {

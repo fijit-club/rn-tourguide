@@ -18,8 +18,6 @@ interface Props {
   tooltipBottomOffset?: number
   borderRadiusObject?: BorderRadiusObject
   tooltipArrowPosition?: ArrowPositions
-  isLastStep: boolean
-  onZonePress?: () => void
 }
 
 export const Step = (props: Props) => {
