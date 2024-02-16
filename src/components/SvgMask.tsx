@@ -196,7 +196,7 @@ export class SvgMask extends Component<Props, State> {
       currentStep,
       isLastStep,
       handleNext,
-      tourKey,
+      // tourKey,
     } = this.props
 
     const onZonePress = (e: GestureResponderEvent) => {
@@ -210,9 +210,9 @@ export class SvgMask extends Component<Props, State> {
       ) {
         if (currentStep && currentStep.onZonePress) {
           currentStep.onZonePress()
-          if (tourKey !== '_default') {
-            handleNext()
-          }
+          // if (tourKey !== '_default') {
+          //   handleNext()
+          // }
           return
         }
 
