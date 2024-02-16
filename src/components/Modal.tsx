@@ -38,6 +38,7 @@ export interface ModalProps {
   next: () => void
   prev: () => void
   preventOutsideInteraction?: boolean
+  tourKey: string
 }
 
 interface Layout {
@@ -276,6 +277,7 @@ export class Modal extends React.Component<ModalProps, State> {
       stop={this.props.stop}
       handleNext={this.handleNext}
       isLastStep={this.props.isLastStep}
+      tourKey={this.props.tourKey}
     />
   )
 

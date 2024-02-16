@@ -30,6 +30,7 @@ interface Props {
   easing: (value: number) => number
   stop: () => void
   handleNext: () => void
+  tourKey: string
 }
 
 interface State {
@@ -195,6 +196,7 @@ export class SvgMask extends Component<Props, State> {
       currentStep,
       isLastStep,
       handleNext,
+      tourKey,
     } = this.props
 
     const onZonePress = (e: GestureResponderEvent) => {
@@ -208,7 +210,10 @@ export class SvgMask extends Component<Props, State> {
       ) {
         if (currentStep && currentStep.onZonePress) {
           currentStep.onZonePress()
-          return;
+          if (tourKey !== '_default') {
+            handleNext()
+          }
+          return
         }
 
         if (isLastStep) {

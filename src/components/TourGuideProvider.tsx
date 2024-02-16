@@ -158,9 +158,8 @@ export const TourGuideProvider = ({
             return newStep
           })
           resolve()
-        }, 100);
-      }
-      else {
+        }, 100)
+      } else {
         updateCurrentStep((currentStep) => {
           const newStep = { ...currentStep }
           newStep[key] = step
@@ -169,7 +168,6 @@ export const TourGuideProvider = ({
         })
         resolve()
       }
-      
     })
 
   const getNextStep = (
@@ -304,6 +302,7 @@ export const TourGuideProvider = ({
             borderRadius,
             dismissOnPress,
             preventOutsideInteraction,
+            tourKey,
           }}
         />
       </TourGuideContext.Provider>
