@@ -34,7 +34,7 @@ export interface ModalProps {
   labels: Labels
   dismissOnPress?: boolean
   easing: (value: number) => number
-  stop: () => void
+  stop: (key?: string) => void
   next: () => void
   prev: () => void
   preventOutsideInteraction?: boolean

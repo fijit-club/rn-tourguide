@@ -266,7 +266,7 @@ export const TourGuideProvider = ({
   }
   const next = () => _next(tourKey)
   const prev = () => _prev(tourKey)
-  const stop = () => _stop(tourKey)
+  const stop = (key?: string) => _stop(key ?? tourKey)
   return (
     <View style={[styles.container, wrapperStyle]}>
       <TourGuideContext.Provider
